@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="../index.js" defer></script>
+  <title>PersonelDetails</title>
+</head>
+
+<body>
+
+  <div class="flexb">
+
+
+    <form id="myForm">
+      <div class="title">
+        <h1 class="formTitle">Personel Information</h1>
+      </div>
+      <p class="inputBox rAlign  " type="text" id="date" name="date"></p>
+
+      <p class="inputBox rAlign  " type="text" id="time" name="time"></p>
+      <div class="sNo">
+      <label class="labelSno" for="serialNo">Serial Number:</label>
+      <p class="  fixD " type="text" id="serialNo" name="serialNo"></p>
+      </div>
+      <br>
+      <label for="name">Name:</label><br>
+      <input class="inputBox" type="text" id="name" name="name" >
+      <br>
+
+      <label for="dOB">DoB:</label><br>
+      <input class="inputBox" type="date" id="dOB" name="dateOfBirth" >
+      <br>
+
+      <label for="gender">Gender:</label><br>
+      <input class="optionInput" type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label>
+      <input class="optionInput" type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label>
+      <br>
+
+      <label for="languages">Languages:</label><br>
+      <input class="optionInput " type="checkbox" id="english" name="language" value="english">
+      <label for="english">English</label>
+      <input class="optionInput" type="checkbox" id="hindi" name="language" value="hindi">
+      <label for="hindi">Hindi</label><br>
+      <input class="optionInput" type="checkbox" id="punjabi" name="language" value="punjabi">
+      <label for="punjabi">Punjabi</label>
+      <input class="optionInput" type="checkbox" id="othersCheckBox" name="language" value="others">
+      <label for="othersCheckBox">Others</label><br>
+      <input class="inputBox othersLangBox" type="text" id="others" name="language" placeholder="Other Languages">
+      <br>
+
+      <label for="email">eMail:</label><br>
+      <input class="inputBox eMailBox" type="email" id="email" name="email" ><br>
+
+      <label for="phone">Mobile No:</label><br>
+      <input class="inputBox" type="text" id="phone" name="phone"  onKeyDown="validatePhone(event, this)"  maxlength="10" max="10" min="10" >
+      <br>
+
+      <label for="education">Education:</label><br>
+      <select  class="selectOption" name="education" id="education" >
+        <option value="diploma">Diploma</option>
+        <option value="postGraduate">Post Graduate</option>
+        <option value="underGraduate">UnderGraduate</option>
+      </select>
+      <br>
+
+      <label for="address">Address:</label><br>
+      <textarea class="inputBox" name="address" id="address" ></textarea><br>
+
+      <label for="state">State:</label><br>
+      <input class="inputBox" type="text" id="state" name="state"><br>
+
+      <label for="pinCode">Pin Code:</label><br>
+      <input name="pinCode" class="inputBox" id="pinCode" onKeyDown="validatePin(event, this)" type="text" maxlength="6" max="6" min="6">
+      <br>
+
+      <label for="comments"> Comments:</label><br>
+      <textarea class="inputBox" name="comments" id="comments"></textarea>
+      <br>
+
+      <label for="imageInput">Image:</label><br>
+      <div id="profileImage">
+        <img id="imagePreview" src="../images/defaultProfile.png">
+      </div>
+      <input type="file" accept="image/*" onchange="previewProfilePic(event)" maxlength="5000000" id="imageInput"
+        name="image"><br>
+
+      <button type="button" class="btn" onclick="submitForm()">Submit</button>
+      <button type="button" class="btn" onclick="clearForm()">Reset</button><br>
+      <button type="button" class="btn " onclick="downloadCSV()">Download</button>
+      <button type="button" id="closeBtn" class="btn" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</body>
+
+</html>

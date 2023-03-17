@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@1,600&display=swap');
+
+body {
+    font-family: 'Lora', serif;
+    background-color: #018abd;
+    background: radial-gradient(circle at 100%, #018abd, #ace4fc 50%, #eee 75%, #97cbdc 75%);
+}
+
+.flexb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+
+}
+
+.inputBox{
+    width: 19rem;
+    height: 1.1rem;
+    font-family: inherit ;
+}
+.optionInput{
+    margin: 0.4rem 0.5rem 0.4rem 0.5rem ;
+}
+
+#myForm{
+    border: 4px solid black;
+    background-color: #ace4fc;
+    padding: 1rem 3rem 1rem 3rem ;
+}
+
+.formTitle {
+    font-family: 'Finlandica', sans-serif;
+    font-weight: bolder;
+}
+
+.btn {
+    font-family: 'Finlandica', sans-serif;
+    background-color: #004581;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 9px;
+    cursor: pointer;
+}
+.othersLangBox{
+    display: none;
+}
+
+.rAlign{
+    display: flex;
+    justify-content: right;
+    font-size: 1rem;
+    padding: 0;
+}
+
+#imagePreview{
+    margin-top: 5px;
+    height: 10rem;
+    width: 8rem;
+    border: 2px solid black;
+
+}
+
+#date{
+    margin-bottom: 0;
+}
+
+#time{
+    margin-top: 0;
+}
+.sNo{
+    display: inline-flex;
+}
+
+.btn:hover {
+    background-color: #97cbdc;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.labelSno {
+    padding-right: 0.5rem;
+
+
+}
+.selectOption{
+    width: 19.5rem;
+    height: 1.5rem;
+    font-family: inherit;
+}
+.fixD{
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    font-size: 1.1rem;
+}
