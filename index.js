@@ -166,7 +166,7 @@ function submitForm(event) {
     // Clear the form fields
     isImageUploaded=false;
     isResumeUploaded=false;
-    console.log(csvData);
+    // console.log(csvData);
     form.elements["name"].value = "";
     form.elements["dOB"].value = "";
     form.elements["password"].value = "";
@@ -185,7 +185,7 @@ function submitForm(event) {
     form.elements["pinCode"].value = "";
     form.elements["comments"].value = "";
     let profileBackground = document.getElementById("profileImage");
-    profileBackground.innerHTML = ` <img id="imagePreview" src="../images/photoProfile.png">`;
+    profileBackground.innerHTML = ` <img id="imagePreview" src="/images/photoProfile.png">`;
     serialNo += 1;
   }
 
@@ -223,7 +223,7 @@ function clearForm() {
     form.elements["pinCode"].value = "";
     form.elements["comments"].value = "";
     let profileBackground = document.getElementById("profileImage");
-    profileBackground.innerHTML = ` <img id="imagePreview" src="../images/photoProfile.png">`;
+    profileBackground.innerHTML = ` <img id="imagePreview" src="/images/photoProfile.png">`;
   }
 
 }
