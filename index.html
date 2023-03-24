@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="../index.js" defer></script>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/index.js" defer></script>
   <title>PersonelInfomationForm</title>
 </head>
 
@@ -17,7 +17,7 @@
 
     <form id="myForm">
       <div class="title">
-        <h1 class="formTitle leftP">Personel Information</h1>
+        <h1 class="formTitle ">Personel Information</h1>
       </div>
 
       <p class="inputBox rAlign leftP " type="text" id="date" name="date"></p>
@@ -34,19 +34,19 @@
 
       <label for="name">Name: <span class="required">*</span> </label>
       <div class="inputIconImages">
-        <img src="../images/name.png" alt="Name" class="iconImages">
+        <img src="/images/name.png" alt="Name" class="iconImages">
         <input class="inputBox" type="text" id="name" name="name" required>
       </div>
 
       <label for="password">Password: <span class="required">*</span></label><br>
       <div class="inputIconImages">
-        <img src="../images/password.png" alt="pw" class="iconImages">
+        <img src="/images/password.png" alt="pw" class="iconImages">
         <input type="password" class="inputBox" name="password" id="password" required>
       </div><br>
 
       <label for="dOB">DoB:</label><br>
       <div class="inputIconImages">
-        <img src="../images/dOB.png" alt="pw" class="iconImages">
+        <img src="/images/dOB.png" alt="pw" class="iconImages">
         <input class="inputBox" type="date" id="dOB" name="dateOfBirth">
       </div>
       <br>
@@ -72,13 +72,13 @@
 
       <label for="email">eMail:</label><br>
       <div class="inputIconImages">
-        <img src="../images/email.png" alt="pw" class="iconImages">
+        <img src="/images/email.png" alt="pw" class="iconImages">
         <input class="inputBox eMailBox" type="email" id="email" name="email">
       </div><br>
 
       <label for="phone">Mobile No:</label><br>
       <div class="inputIconImages">
-        <img src="../images/mobile.png" alt="pw" class="iconImages">
+        <img src="/images/mobile.png" alt="pw" class="iconImages">
         <input class="inputBox" type="text" id="phone" name="phone" onKeyDown="validatePhone(event, this)"
           maxlength="10" max="10" min="10">
       </div>
@@ -86,7 +86,7 @@
 
       <label for="education">Education:</label><br>
       <div class="inputIconImages">
-        <img src="../images/education.png" alt="pw" class="iconImages">
+        <img src="/images/education.png" alt="pw" class="iconImages">
         <select class="selectOption" name="education" id="education">
           <option value="none">None</option>
           <option value="secondaryEducation">Secondary Education</option>
@@ -99,19 +99,19 @@
 
       <label for="address">Address:</label><br>
       <div class="inputIconImages">
-        <img src="../images/address.png" alt="pw" class="iconImages">
+        <img src="/images/address.png" alt="pw" class="iconImages">
         <textarea class="textInput" name="address" id="address"></textarea>
       </div><br>
 
       <label for="state">State:</label><br>
       <div class="inputIconImages">
-        <img src="../images/state.png" alt="pw" class="iconImages">
+        <img src="/images/state.png" alt="pw" class="iconImages">
         <input class="inputBox" type="text" id="state" name="state">
       </div><br>
 
       <label for="pinCode">Pin Code:</label><br>
       <div class="inputIconImages">
-        <img src="../images/pin.png" alt="pw" class="iconImages">
+        <img src="/images/pin.png" alt="pw" class="iconImages">
         <input name="pinCode" class="inputBox" id="pinCode" onKeyDown="validatePin(event, this)" type="text"
           maxlength="6" max="6" min="6">
       </div>
@@ -119,7 +119,7 @@
 
       <label for="comments"> Comments:</label><br>
       <div class="inputIconImages">
-        <img src="../images/comments.png" alt="pw" class="iconImages">
+        <img src="/images/comments.png" alt="pw" class="iconImages">
         <textarea class="textInput" name="comments" id="comments"></textarea>
       </div>
       <br>
@@ -127,19 +127,18 @@
 
       <label for="resumeInput">Resume:</label><br>
       <div class="inputIconImages">
-        <img src="../images/dOB.png" alt="pw" class="iconImages">
-        <input type="file" onchange="resumeUploaded(event)" class="resumeIp" maxlength="5000000">
+        <img src="/images/dOB.png" alt="pw" class="iconImages">
+        <input type="file" accept="application/pdf" onchange="resumeUploaded(event)" class="resumeIp" maxlength="5000000">
       </div><br>
 
       <label for="imageInput">Image:</label><br>
       <div id="profileImage">
       
-          <img id="imagePreview" src="../images/photoProfile.png">
+          <img id="imagePreview" src="/images/photoProfile.png">
 
       </div>
       <input type="file" accept="image/*" onchange="previewProfilePic(event)" maxlength="5000000" id="imageInput"
         name="image">
-      <br>
       <br>
 
       <button type="submit" class="btn" onclick="submitForm(event)">Submit</button>
