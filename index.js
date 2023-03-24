@@ -1,5 +1,5 @@
 // Initialize the CSV (Comma_Seprated_Variables) data_type string
-let csvData = "S. No.,Date,Time,Name,DoB,Gender,Languages,eMail,Mob. No.,Education,Address,State,Pin Code,Comments,ProfileImage\n";
+let csvData = "S. No.,Date,Time,Name,Password,DoB,Gender,Languages,eMail,Mob. No.,Education,Address,State,Pin Code,Comments,Resume,ProfileImage\n";
 
 // Constant Variables
 const dateInput = document.getElementById("date");
@@ -16,7 +16,7 @@ const currentDate = new Date();
 const day = currentDate.getDate().toString().padStart(2, "0");
 const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
 const year = currentDate.getFullYear();
-const formattedDate = `${day}/${month}/${year}`;
+const formattedDate = `${day}-${month}-${year}`;
 dateInput.innerHTML = formattedDate;
 
 // Time Function
@@ -65,31 +65,36 @@ function validatePin(event, input) {
   event.preventDefault();
   let currVal = input.value ? input.value : "";
   // Checks if the key pressed is a number and the right length
-  if(!isNaN(event.key) && currVal.length < 6){
+  if (!isNaN(event.key) && currVal.length < 6) {
     input.value = currVal + event.key;
   }
   // Backspace functionality
-  else if(event.keyCode == 8 && currVal > 0) {
+  else if (event.keyCode == 8 && currVal > 0) {
     input.value = input.value.slice(0, -1);
-  }  
+  }
 }
 
-function validatePhone(event,input) {
+function validatePhone(event, input) {
   event.preventDefault();
   let currVal = input.value ? input.value : "";
-  if(!isNaN(event.key) && currVal.length < 10){
+  if (!isNaN(event.key) && currVal.length < 10) {
     input.value = currVal + event.key;
   }
   // Backspace functionality
-  else if(event.keyCode == 8 && currVal > 0) {
+  else if (event.keyCode == 8 && currVal > 0) {
     input.value = input.value.slice(0, -1);
-  }  
-  
+  }
+
 }
 
+//upload check function
+
+function isUploaded(input) {
+  return (input.files && input.files.length > 0)  ? "true" : "false";
+}
 
 //Photo Display
-
+let isImageUploaded = false;
 function previewProfilePic(event) {
   let input = event.target;
   let reader = new FileReader();
@@ -97,18 +102,34 @@ function previewProfilePic(event) {
     let profileBackground = document.getElementById("profileImage");
     profileBackground.innerHTML = "<img id='imagePreview' src='" + reader.result + "' alt='Profile Background'>";
   };
-  reader.readAsDataURL(input.files[0]);
+  if (input && input.files && input.files.length > 0) {
+    reader.readAsDataURL(input.files[0]);
+    isImageUploaded = true
+    return
+  }
 }
+let isResumeUploaded = false;
+function resumeUploaded(event) {
+  let input = event.target;
+  if (input && input.files && input.files.length > 0){
+    isResumeUploaded = true;
+  }
+  
+}
+
 
 // Buttons Functions
 
 // Submit Btn
-function submitForm() {
+
+function submitForm(event) {
+  event.preventDefault();
   // Get the form element
   let form = document.getElementById("myForm");
 
   // Get the values of the Input fields
   let nameVal = form.elements["name"].value;
+  let passwordVal = form.elements["password"].value;
   let dobVal = form.elements["dOB"].value;
   let gender = form.elements["gender"].value;
   let emailVal = form.elements["email"].value;
@@ -118,8 +139,7 @@ function submitForm() {
   let pinCode = form.elements["pinCode"].value;
   let comments = form.elements["comments"].value;
   let education = form.elements["education"].value;
-  let image = document.querySelector(`#imagePreview`);
-  let formattedTime = updateTime()
+  let formattedTime = updateTime();
 
 
 
@@ -136,32 +156,42 @@ function submitForm() {
   }
   languages.push(form.elements["others"].value);
 
+  if (nameVal.trim() === '' || passwordVal.trim() === '') {
+    event.preventDefault();
+    alert('Please fill in all mandatory fields.');
+  }
+  else {
+    // Add the form data to the CSV data string
+    csvData += serialNo + "," + formattedDate + "," + formattedTime + "," + nameVal + "," + passwordVal + "," + dobVal + "," + gender + "," + languages.join("|") + "," + emailVal + "," + phoneVal + "," + education + "," + addressVal + "," + stateVal + "," + pinCode + "," + comments + "," + isResumeUploaded  + " , " + isImageUploaded+ "\n";
+    // Clear the form fields
+    isImageUploaded=false;
+    isResumeUploaded=false;
+    console.log(csvData);
+    form.elements["name"].value = "";
+    form.elements["dOB"].value = "";
+    form.elements["password"].value = "";
+    form.elements["male"].checked = false;
+    form.elements["female"].checked = false;
+    form.elements["english"].checked = false;
+    form.elements["hindi"].checked = false;
+    form.elements["punjabi"].checked = false;
+    form.elements["othersCheckBox"].checked = false;
+    form.elements["others"].value = "";
+    form.elements["email"].value = "";
+    form.elements["phone"].value = "";
+    form.elements["education"].value = "None";
+    form.elements["address"].value = "";
+    form.elements["state"].value = "";
+    form.elements["pinCode"].value = "";
+    form.elements["comments"].value = "";
+    let profileBackground = document.getElementById("profileImage");
+    profileBackground.innerHTML = ` <img id="imagePreview" src="../images/photoProfile.png">`;
+    serialNo += 1;
+  }
 
-
-  // Add the form data to the CSV data string
-  csvData += serialNo + "," + formattedDate + "," + formattedTime + "," + nameVal + "," + dobVal + "," + gender + "," + languages.join("|") + "," + emailVal + "," + phoneVal + "," + education + "," + addressVal + "," + stateVal + "," + pinCode + "," + comments + "," + image.value + "\n";
-  // Clear the form fields
-  console.log(csvData);
-  form.elements["name"].value = "";
-  form.elements["dOB"].value = "";
-  form.elements["male"].checked = false;
-  form.elements["female"].checked = false;
-  form.elements["english"].checked = false;
-  form.elements["hindi"].checked = false;
-  form.elements["punjabi"].checked = false;
-  form.elements["othersCheckBox"].checked = false;
-  form.elements["others"].value = "";
-  form.elements["email"].value = "";
-  form.elements["phone"].value = "";
-  form.elements["education"].value = "diploma";
-  form.elements["address"].value = "";
-  form.elements["state"].value = "";
-  form.elements["pinCode"].value = "";
-  form.elements["comments"].value = "";
-  let profileBackground = document.getElementById("profileImage");
-  profileBackground.innerHTML = `<img id="imagePreview" src="../images/defaultProfile.png"  >`;
-  serialNo += 1;
 }
+
+
 
 // Clear Btn
 
@@ -169,27 +199,31 @@ function clearForm() {
 
   let result = confirm("Do you want to clear form?");
   if (result == true) {
-  // Get the form element
-  let form = document.getElementById("myForm");
-  // Clear the form fields
-  form.elements["name"].value = "";
-  form.elements["dOB"].value = "";
-  form.elements["male"].checked = false;
-  form.elements["female"].checked = false;
-  form.elements["english"].checked = false;
-  form.elements["hindi"].checked = false;
-  form.elements["punjabi"].checked = false;
-  form.elements["othersCheckBox"].checked = false;
-  form.elements["others"].value = "";
-  form.elements["email"].value = "";
-  form.elements["phone"].value = "";
-  form.elements["education"].value = "diploma";
-  form.elements["address"].value = "";
-  form.elements["state"].value = "";
-  form.elements["pinCode"].value = "";
-  form.elements["comments"].value = "";
-  let profileBackground = document.getElementById("profileImage");
-  profileBackground.innerHTML = `<img id="imagePreview" src="../images/defaultProfile.png"  >`;
+    // Get the form element
+    isImageUploaded=false;
+    isResumeUploaded=false;
+    let form = document.getElementById("myForm");
+    // Clear the form fields
+
+    form.elements["name"].value = "";
+    form.elements["dOB"].value = "";
+    form.elements["password"].value = "";
+    form.elements["male"].checked = false;
+    form.elements["female"].checked = false;
+    form.elements["english"].checked = false;
+    form.elements["hindi"].checked = false;
+    form.elements["punjabi"].checked = false;
+    form.elements["othersCheckBox"].checked = false;
+    form.elements["others"].value = "";
+    form.elements["email"].value = "";
+    form.elements["phone"].value = "";
+    form.elements["education"].value = "None";
+    form.elements["address"].value = "";
+    form.elements["state"].value = "";
+    form.elements["pinCode"].value = "";
+    form.elements["comments"].value = "";
+    let profileBackground = document.getElementById("profileImage");
+    profileBackground.innerHTML = ` <img id="imagePreview" src="../images/photoProfile.png">`;
   }
 
 }
@@ -215,3 +249,4 @@ function closeForm() {
     window.location = "https://www.google.com";
   }
 }
+

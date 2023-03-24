@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="../index.js" defer></script>
-  <title>PersonelDetails</title>
+  <title>PersonelInfomationForm</title>
 </head>
 
 <body>
@@ -19,20 +19,36 @@
       <div class="title">
         <h1 class="formTitle">Personel Information</h1>
       </div>
+
       <p class="inputBox rAlign  " type="text" id="date" name="date"></p>
 
       <p class="inputBox rAlign  " type="text" id="time" name="time"></p>
       <div class="sNo">
-      <label class="labelSno" for="serialNo">Serial Number:</label>
-      <p class="  fixD " type="text" id="serialNo" name="serialNo"></p>
+
+
+        <label class="labelSno" for="serialNo">Serial Number:</label>
+        <p class="  fixD " type="text" id="serialNo" name="serialNo"></p>
       </div>
       <br>
-      <label for="name">Name:</label><br>
-      <input class="inputBox" type="text" id="name" name="name" >
-      <br>
+
+
+      <label for="name">Name: <span class="required">*</span> </label>
+      <div class="inputIconImages">
+        <img src="../images/name.png" alt="Name" class="iconImages">
+        <input class="inputBox" type="text" id="name" name="name" required>
+      </div>
+
+      <label for="password">Password: <span class="required">*</span></label><br>
+      <div class="inputIconImages">
+        <img src="../images/password.png" alt="pw" class="iconImages">
+        <input type="password" class="inputBox" name="password" id="password" required>
+      </div><br>
 
       <label for="dOB">DoB:</label><br>
-      <input class="inputBox" type="date" id="dOB" name="dateOfBirth" >
+      <div class="inputIconImages">
+        <img src="../images/dOB.png" alt="pw" class="iconImages">
+        <input class="inputBox" type="date" id="dOB" name="dateOfBirth">
+      </div>
       <br>
 
       <label for="gender">Gender:</label><br>
@@ -55,46 +71,83 @@
       <br>
 
       <label for="email">eMail:</label><br>
-      <input class="inputBox eMailBox" type="email" id="email" name="email" ><br>
+      <div class="inputIconImages">
+        <img src="../images/email.png" alt="pw" class="iconImages">
+        <input class="inputBox eMailBox" type="email" id="email" name="email">
+      </div><br>
 
       <label for="phone">Mobile No:</label><br>
-      <input class="inputBox" type="text" id="phone" name="phone"  onKeyDown="validatePhone(event, this)"  maxlength="10" max="10" min="10" >
+      <div class="inputIconImages">
+        <img src="../images/mobile.png" alt="pw" class="iconImages">
+        <input class="inputBox" type="text" id="phone" name="phone" onKeyDown="validatePhone(event, this)"
+          maxlength="10" max="10" min="10">
+      </div>
       <br>
 
       <label for="education">Education:</label><br>
-      <select  class="selectOption" name="education" id="education" >
-        <option value="diploma">Diploma</option>
-        <option value="postGraduate">Post Graduate</option>
-        <option value="underGraduate">UnderGraduate</option>
-      </select>
+      <div class="inputIconImages">
+        <img src="../images/education.png" alt="pw" class="iconImages">
+        <select class="selectOption" name="education" id="education">
+          <option value="none">None</option>
+          <option value="secondaryEducation">Secondary Education</option>
+          <option value="diploma">Diploma</option>
+          <option value="postGraduate">Post-Graduate</option>
+          <option value="underGraduate">Under-Graduate</option>
+        </select>
+      </div>
       <br>
 
       <label for="address">Address:</label><br>
-      <textarea class="inputBox" name="address" id="address" ></textarea><br>
+      <div class="inputIconImages">
+        <img src="../images/address.png" alt="pw" class="iconImages">
+        <textarea class="textInput" name="address" id="address"></textarea>
+      </div><br>
 
       <label for="state">State:</label><br>
-      <input class="inputBox" type="text" id="state" name="state"><br>
+      <div class="inputIconImages">
+        <img src="../images/state.png" alt="pw" class="iconImages">
+        <input class="inputBox" type="text" id="state" name="state">
+      </div><br>
 
       <label for="pinCode">Pin Code:</label><br>
-      <input name="pinCode" class="inputBox" id="pinCode" onKeyDown="validatePin(event, this)" type="text" maxlength="6" max="6" min="6">
+      <div class="inputIconImages">
+        <img src="../images/pin.png" alt="pw" class="iconImages">
+        <input name="pinCode" class="inputBox" id="pinCode" onKeyDown="validatePin(event, this)" type="text"
+          maxlength="6" max="6" min="6">
+      </div>
       <br>
 
       <label for="comments"> Comments:</label><br>
-      <textarea class="inputBox" name="comments" id="comments"></textarea>
+      <div class="inputIconImages">
+        <img src="../images/comments.png" alt="pw" class="iconImages">
+        <textarea class="textInput" name="comments" id="comments"></textarea>
+      </div>
       <br>
+
+
+      <label for="resumeInput">Resume:</label><br>
+      <div class="inputIconImages">
+        <img src="../images/dOB.png" alt="pw" class="iconImages">
+        <input type="file" onchange="resumeUploaded(event)" class="resumeIp" maxlength="5000000">
+      </div><br>
 
       <label for="imageInput">Image:</label><br>
       <div id="profileImage">
-        <img id="imagePreview" src="../images/defaultProfile.png">
+      
+          <img id="imagePreview" src="../images/photoProfile.png">
+
       </div>
       <input type="file" accept="image/*" onchange="previewProfilePic(event)" maxlength="5000000" id="imageInput"
-        name="image"><br>
+        name="image">
+      <br>
 
-      <button type="button" class="btn" onclick="submitForm()">Submit</button>
+      <button type="submit" class="btn" onclick="submitForm(event)">Submit</button>
       <button type="button" class="btn" onclick="clearForm()">Reset</button><br>
+
       <button type="button" class="btn " onclick="downloadCSV()">Download</button>
       <button type="button" id="closeBtn" class="btn" onclick="closeForm()">Close</button>
     </form>
+
   </div>
 </body>
 
