@@ -17,12 +17,12 @@
 
     <form id="myForm">
       <div class="title">
-        <h1 class="formTitle">Personel Information</h1>
+        <h1 class="formTitle leftP">Personel Information</h1>
       </div>
 
-      <p class="inputBox rAlign  " type="text" id="date" name="date"></p>
+      <p class="inputBox rAlign leftP " type="text" id="date" name="date"></p>
 
-      <p class="inputBox rAlign  " type="text" id="time" name="time"></p>
+      <p class="inputBox rAlign leftP " type="text" id="time" name="time"></p>
       <div class="sNo">
 
 
@@ -140,12 +140,13 @@
       <input type="file" accept="image/*" onchange="previewProfilePic(event)" maxlength="5000000" id="imageInput"
         name="image">
       <br>
+      <br>
 
       <button type="submit" class="btn" onclick="submitForm(event)">Submit</button>
-      <button type="button" class="btn" onclick="clearForm()">Reset</button><br>
-
-      <button type="button" class="btn " onclick="downloadCSV()">Download</button>
-      <button type="button" id="closeBtn" class="btn" onclick="closeForm()">Close</button>
+      <button type="button" class="btn" onclick="clearForm()">Reset</button>
+      <button type="button" id="closeBtn" class="btn" onclick="closeForm()">Exit</button>
+      
+      <button type="button" class="btn downloadBtn " onclick="downloadCSV()"><img src="../images/dnld.png" alt="download" class="downloadImages" ></button>
     </form>
 
   </div>
