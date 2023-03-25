@@ -60,6 +60,9 @@ body {
 }
 .othersLangBox{
     display: none;
+    position: relative;
+    bottom: 0;
+    
 }
 
 .rAlign{
@@ -209,4 +212,8 @@ input:active {
     position: relative;
     left: 25px;
    }
+   .othersLangBox{
+    bottom: 0;
+    left: 0;
+}
 }
