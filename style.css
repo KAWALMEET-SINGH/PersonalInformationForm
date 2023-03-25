@@ -186,3 +186,27 @@ input:active {
 .leftP{
     padding-left: 46px;
 }
+
+@media screen and (max-width: 473px) {
+   .inputBox{
+    bottom: 43.6px;
+    left: 43px;
+   }
+   .textInput{
+    bottom: 43.6px;
+    left: 43px;
+   }
+   .selectOption{
+    bottom: 43.6px;
+    left: 43px;
+   }
+   .leftP{
+    position: relative;
+    bottom: 0;
+    right: 0;
+   }
+   .formTitle{
+    position: relative;
+    left: 25px;
+   }
+}
