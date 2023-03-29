@@ -73,13 +73,13 @@
       <label for="email">eMail:</label><br>
       <div class="inputIconImages">
         <img src="/images/email.png" alt="pw" class="iconImages">
-        <input class="inputBox eMailBox" type="email" id="email" name="email">
+        <input class="inputBox eMailBox afterCB" type="email" id="email" name="email">
       </div><br>
 
       <label for="phone">Mobile No:</label><br>
       <div class="inputIconImages">
         <img src="/images/mobile.png" alt="pw" class="iconImages">
-        <input class="inputBox" type="text" id="phone" name="phone" onKeyDown="validatePhone(event, this)"
+        <input class="inputBox afterCB" type="text" id="phone" name="phone" onKeyDown="validatePhone(event, this)"
           maxlength="10" max="10" min="10">
       </div>
       <br>
@@ -106,13 +106,13 @@
       <label for="state">State:</label><br>
       <div class="inputIconImages">
         <img src="/images/state.png" alt="pw" class="iconImages">
-        <input class="inputBox" type="text" id="state" name="state">
+        <input class="inputBox afterCB" type="text" id="state" name="state">
       </div><br>
 
       <label for="pinCode">Pin Code:</label><br>
       <div class="inputIconImages">
         <img src="/images/pin.png" alt="pw" class="iconImages">
-        <input name="pinCode" class="inputBox" id="pinCode" onKeyDown="validatePin(event, this)" type="text"
+        <input name="pinCode" class="inputBox afterCB" id="pinCode" onKeyDown="validatePin(event, this)" type="text"
           maxlength="6" max="6" min="6">
       </div>
       <br>
@@ -128,7 +128,7 @@
       <label for="resumeInput">Resume:</label><br>
       <div class="inputIconImages">
         <img src="/images/dOB.png" alt="pw" class="iconImages">
-        <input type="file" accept="application/pdf" onchange="resumeUploaded(event)" class="resumeIp" maxlength="5000000">
+        <input type="file" accept="application/pdf" onchange="resumeUploaded(event)" class="inputBox resumeIp" maxlength="5000000">
       </div><br>
 
       <label for="imageInput">Image:</label><br>
